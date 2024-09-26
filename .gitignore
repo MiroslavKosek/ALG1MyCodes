@@ -34,5 +34,11 @@ manifest.mf
 .idea/**/
 out/
 
+### VS Code ###
+.vscode/
+
 #OS
 .DS_Store
+
+# Maven-specific files (if applicable)
+target/
