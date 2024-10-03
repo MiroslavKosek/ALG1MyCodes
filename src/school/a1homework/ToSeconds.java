@@ -33,14 +33,20 @@ public class ToSeconds {
 //        int pocetMinut = Integer.parseInt(args[1]);
 //        int pocetSekund = Integer.parseInt(args[2]);
         
-        final int SEC_IN_HOUR = 3600;
-        final int SEC_IN_MIN = 60;
-        
         //Zpracovani 
-        int celkem = (pocetHodin * SEC_IN_HOUR) + (pocetMinut * SEC_IN_MIN) + pocetSekund;
+        int celkem = convertToSeconds(pocetHodin, pocetMinut, pocetSekund);
         
         //Vystup
         System.out.format("Čas závodníka je %d vteřin%n\n", celkem);
+    }
+    
+    public static int convertToSeconds(int pocetHodin, int pocetMinut, int pocetSekund) {
+        final int SEC_IN_HOUR = 3600;
+        final int SEC_IN_MIN = 60;
+        
+        int celkem = (pocetHodin * SEC_IN_HOUR) + (pocetMinut * SEC_IN_MIN) + pocetSekund;
+        
+        return celkem;
     }
     
 }
