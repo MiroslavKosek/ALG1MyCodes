@@ -1,4 +1,4 @@
-package school.a1homework;
+package school.a1introduction;
 
 import java.util.Scanner;
 
@@ -32,9 +32,12 @@ public class ToSeconds {
 //        int pocetHodin = Integer.parseInt(args[0]);
 //        int pocetMinut = Integer.parseInt(args[1]);
 //        int pocetSekund = Integer.parseInt(args[2]);
+
+        final int SEC_IN_HOUR = 3600;
+        final int SEC_IN_MIN = 60;
         
         //Zpracovani 
-        int celkem = convertToSeconds(pocetHodin, pocetMinut, pocetSekund);
+        int celkem = (pocetHodin * SEC_IN_HOUR) + (pocetMinut * SEC_IN_MIN) + pocetSekund;
         
         //Vystup
         System.out.format("Čas závodníka je %d vteřin%n\n", celkem);
