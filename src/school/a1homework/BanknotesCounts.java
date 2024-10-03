@@ -1,5 +1,7 @@
 package school.a1homework;
 
+import java.util.Scanner;
+
 /**
  *
  * @author Miroslav Košek
@@ -8,7 +10,19 @@ public class BanknotesCounts {
     
     public static void main(String[] args) {
         //input
-        int amount = 1876;
+//        int amount = 1876;
+        
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Zadejte castku v Kc: ");
+        int amount = sc.nextInt();
+        
+//        if (args.length != 1) {
+//            System.out.println("Chyba: Zadejte castku jako parametr.");
+//            return;
+//        }
+//
+//        int amount = Integer.parseInt(args[0]);
 
         //processing
         int[] values = {100, 50, 20, 10, 5, 2, 1};
