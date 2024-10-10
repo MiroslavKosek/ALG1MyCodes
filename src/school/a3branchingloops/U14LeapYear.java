@@ -1,5 +1,7 @@
 package school.a3branchingloops;
 
+import java.util.Scanner;
+
 /**
  *
  * @author Miroslav Košek
@@ -13,7 +15,10 @@ public class U14LeapYear {
     
     public static void main(String[] args) {
         //input
-        int year = 2024;
+        Scanner sc = new Scanner(System.in);
+        
+        System.out.println("Zadejte rok:");
+        int year = sc.nextInt();
         
         //processing
         boolean leapYear = false;
