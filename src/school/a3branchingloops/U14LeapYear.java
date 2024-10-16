@@ -17,27 +17,27 @@ public class U14LeapYear {
         //input
         Scanner sc = new Scanner(System.in);
         
-        final int DAYS_IN_YEAR = 365;
-        final int LEAP_DAY = 1;
-        
         System.out.println("Zadejte rok:");
         int year = sc.nextInt();
         
         //processing
-        boolean leapYear = false;
-        if (year % 4 == 0 && (year % 100 != 0 || (year % 100 == 0 && year % 400 == 0))) {
-            leapYear = true;
-        }
+        boolean isLeap = isLeap(year);
         
-        int days = leapYear ? DAYS_IN_YEAR + LEAP_DAY : DAYS_IN_YEAR;
+        int days = isLeap ? 366 : 365;
         
         //output
-        if (leapYear) {
+        if (isLeap) {
             System.out.format("Rok %d je prestupny a ma %d dni\n", year, days);
         }
         else {
             System.out.format("Rok %d neni prestupny a ma %d dni\n", year, days);
         }
+    }
+    
+    public static boolean isLeap(int year) {
+        boolean isLeap = year % 4 == 0 && (year % 100 != 0 || (year % 100 == 0 && year % 400 == 0));
+        
+        return isLeap;
     }
     
 }
