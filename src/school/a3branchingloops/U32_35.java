@@ -4,7 +4,7 @@ package school.a3branchingloops;
  *
  * @author Miroslav Košek
  */
-public class U3235For {
+public class U32_35 {
     
     public static void main(String[] args) {
         int n = 5;
