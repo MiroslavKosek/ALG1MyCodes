@@ -28,10 +28,21 @@ public class ChristmasProject {
         Scanner sc = new Scanner(System.in);
 
         // Ask for tree height
-        System.out.print("Enter the height of the Christmas tree: ");
-        int height = sc.nextInt();
-        sc.nextLine();
-
+        int height = -1;
+        while (height <= 0 || height > 50) {
+            System.out.print("Enter the height of the Christmas tree (1 to 50): ");
+            if (sc.hasNextInt()) {
+                height = sc.nextInt();
+                if (height <= 0 || height > 50) {
+                    System.out.println("Invalid input! Please enter a number between 1 and 50.");
+                }
+            } else {
+                System.out.println("Invalid input! Please enter a valid integer.");
+                sc.next();
+            }
+            sc.nextLine();
+        }
+        
         // Ask for present names
         System.out.print("Enter the name for the first present: ");
         String present1 = sc.nextLine();
@@ -46,7 +57,7 @@ public class ChristmasProject {
         drawPresent(present1, 0, getRandomColor());
         drawPresent(present2, 15, getRandomColor());
     }
-
+    
     // Function to draw the Christmas tree
     public static void drawTree(int height) {
         Random rand = new Random();
@@ -79,7 +90,13 @@ public class ChristmasProject {
         int presentWidth = 11;
         int presentHeight = 5;
         int ribbonColumn = presentWidth / 2;
-        int nameStartPos = (presentWidth - 2 - name.length()) / 2; // Center the name if it's shorter
+
+        // Limit name length to fit within the present
+        if (name.length() > presentWidth - 2) {
+            name = name.substring(0, presentWidth - 2);
+        }
+
+        int nameStartPos = Math.max((presentWidth - 2 - name.length()) / 2, 0); // Ensure non-negative
 
         // Draw the top of the present
         System.out.println(" ".repeat(offset) + color + "+++++++++++" + RESET);
