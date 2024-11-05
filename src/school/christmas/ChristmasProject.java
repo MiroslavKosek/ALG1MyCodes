@@ -54,8 +54,7 @@ public class ChristmasProject {
         drawTree(height);
 
         // Draw the presents with random colors
-        drawPresent(present1, 0, getRandomColor());
-        drawPresent(present2, 15, getRandomColor());
+        drawPresents(present1, present2, getRandomColor(), getRandomColor());
     }
     
     // Function to draw the Christmas tree
@@ -85,43 +84,66 @@ public class ChristmasProject {
         }
     }
 
-    // Function to draw a present with a name tag, color, and ribbons
-    public static void drawPresent(String name, int offset, String color) {
+    // Function to draw two presents on the same row
+    public static void drawPresents(String name1, String name2, String color1, String color2) {
         int presentWidth = 11;
         int presentHeight = 5;
         int ribbonColumn = presentWidth / 2;
+        int spacing = 15;
 
         // Limit name length to fit within the present
-        if (name.length() > presentWidth - 2) {
-            name = name.substring(0, presentWidth - 2);
+        if (name1.length() > presentWidth - 2) {
+            name1 = name1.substring(0, presentWidth - 2);
+        }
+        if (name2.length() > presentWidth - 2) {
+            name2 = name2.substring(0, presentWidth - 2);
         }
 
-        int nameStartPos = Math.max((presentWidth - 2 - name.length()) / 2, 0); // Ensure non-negative
+        int name1StartPos = Math.max((presentWidth - 2 - name1.length()) / 2, 0);
+        int name2StartPos = Math.max((presentWidth - 2 - name2.length()) / 2, 0);
 
-        // Draw the top of the present
-        System.out.println(" ".repeat(offset) + color + "+++++++++++" + RESET);
+        // Draw the top of both presents
+        System.out.print(color1 + "+++++++++++" + RESET + " ".repeat(spacing) + color2 + "+++++++++++" + RESET + "\n");
 
-        // Draw the sides and ribbons with the name on the horizontal ribbon in the middle row
+        // Draw the sides and ribbons with the names
         for (int i = 0; i < presentHeight; i++) {
-            System.out.print(" ".repeat(offset) + color + "+");
-
-            if (i == presentHeight / 2) { // Center row with horizontal ribbon and name
-                System.out.print("#".repeat(nameStartPos) + WHITE + name + RESET + color + "#".repeat(presentWidth - nameStartPos - name.length() - 2) + "+");
-            } else { // Other rows
+            // First present
+            System.out.print(color1 + "+");
+            if (i == presentHeight / 2) { // Center row with name on ribbon
+                System.out.print("#".repeat(name1StartPos) + WHITE + name1 + RESET + color1 + "#".repeat(presentWidth - name1StartPos - name1.length() - 2) + "+");
+            } else {
                 for (int j = 0; j < presentWidth - 2; j++) {
-                    if (j == ribbonColumn - 1) { // Vertical ribbon down the middle
+                    if (j == ribbonColumn - 1) {
                         System.out.print("#");
                     } else {
                         System.out.print(" ");
                     }
                 }
-                System.out.print(color + "+");
+                System.out.print(color1 + "+");
+            }
+
+            // Space between the two presents
+            System.out.print(" ".repeat(spacing));
+
+            // Second present
+            System.out.print(color2 + "+");
+            if (i == presentHeight / 2) { // Center row with name on ribbon
+                System.out.print("#".repeat(name2StartPos) + WHITE + name2 + RESET + color2 + "#".repeat(presentWidth - name2StartPos - name2.length() - 2) + "+");
+            } else {
+                for (int j = 0; j < presentWidth - 2; j++) {
+                    if (j == ribbonColumn - 1) {
+                        System.out.print("#");
+                    } else {
+                        System.out.print(" ");
+                    }
+                }
+                System.out.print(color2 + "+");
             }
             System.out.println(RESET);
         }
 
-        // Draw the bottom of the present
-        System.out.println(" ".repeat(offset) + color + "+++++++++++" + RESET);
+        // Draw the bottom of both presents
+        System.out.println(color1 + "+++++++++++" + RESET + " ".repeat(spacing) + color2 + "+++++++++++" + RESET);
     }
 
     // Function to get a random color from the COLORS array
