@@ -81,6 +81,34 @@ public class ArrayTools {
         return min;
     }
     
+    public static int countMin2(int[] a) {
+
+        int count = 1;
+        int min = a[getFirstMin(a)];
+        for (int i = 0; i < a.length; i++) {
+            if (a[i] == min) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    public static int countMin(int[] a) {
+
+        int count = 1;
+        int min = a[0];
+        for (int i = 1; i < a.length; i++) {
+            if (a[i] == min) {
+                count++;
+            }
+            if (a[i] < min) {
+                count = 1;
+                min = a[i];
+            }
+        }
+        return count;
+    }
+    
     public static int getFirstMax(int[] numbers) {
         int max = numbers[0];
         int index = 0;
