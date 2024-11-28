@@ -6,29 +6,42 @@ import java.util.Scanner;
  *
  * @author Miroslav Košek
  */
-public class U10 {
+public class U11 {
     
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         
         while(true) {
-            System.out.println("Zadej cislo");
-            long num = sc.nextLong();
-            if(num <= 0) {
+            System.out.println("Zadej rozsah");
+            int a = sc.nextInt();
+            if (a < 0) {
                 break;
             }
+            int b = sc.nextInt();
             
-            long soupiskaNum = soupiska(num);
-            System.out.println("Cislo " + num + " ma soupisku " + soupiskaNum);
-            
-            if (num == soupiskaNum) {
-                System.out.println("Cislo " + num + " je zapisem sve soupisky");
-            } else {
-                System.out.println("Cislo " + num + " neni zapisem sve soupisky");
+            System.out.println("Nalezena cisla");
+            long[] nums = soupisky(a, b);
+            int n = 0;
+            for (int i = 0; i < nums.length; i++) {
+                if (nums[i] != 0) {
+                    n++;
+                    System.out.println(nums[i]);
+                }
             }
-            
+            System.out.println("Pocet nalezenych cisel " + n);
             System.out.println("");
         }
+    }
+    
+    public static long[] soupisky(int a, int b) {
+        long[] nums = new long[b-a];
+        for (int i = 0; i < b-a; i++) {
+            long soupiska = soupiska(a+i);
+            if (soupiska == a+i) {
+                nums[i] = soupiska;
+            }
+        }
+        return nums;
     }
     
     public static long soupiska(long num) {

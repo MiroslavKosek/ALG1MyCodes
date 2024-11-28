@@ -68,9 +68,9 @@ public class U4 {
             
             System.out.println("");
             
-            System.out.println("Pokracovat ve zpracovani (a/n):");
             char input;
             do {
+                System.out.println("Pokracovat ve zpracovani (a/n):");
                 input = sc.next().toLowerCase().charAt(0);
             } while (input != 'a' && input != 'n');
             again = input != 'n';

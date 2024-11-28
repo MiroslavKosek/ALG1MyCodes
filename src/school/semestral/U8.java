@@ -30,10 +30,9 @@ public class U8 {
                 System.out.print(points[i][0] + " " + points[i][1] + " " + points[i][2] + "\n");
             }
             
-            System.out.println("Pokracovat ve zpracovani (a/n):");
             char input = 'y';
-            
             do {
+                System.out.println("Pokracovat ve zpracovani (a/n):");
                 input = sc.next().toLowerCase().charAt(0);
             } while (input != 'a' && input != 'n');
             

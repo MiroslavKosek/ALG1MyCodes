@@ -52,10 +52,10 @@ public class U7 {
             System.out.println("Na hranici trojuhelnika lezi " + onBoundary + " bodu");
             System.out.println("Vne trojuhelnika lezi " + outside + " bodu");
             
-            System.out.println("Pokracovat ve zpracovani (a/n):");
+
             char input = 'y';
-            
             do {
+                System.out.println("Pokracovat ve zpracovani (a/n):");
                 input = sc.next().toLowerCase().charAt(0);
             } while (input != 'a' && input != 'n');
             
