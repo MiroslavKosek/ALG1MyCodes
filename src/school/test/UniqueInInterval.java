@@ -1,5 +1,7 @@
 package school.test;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Scanner;
 
 /**
@@ -10,28 +12,32 @@ public class UniqueInInterval {
     
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        final int DELTA = 10;
-        int[] a = new int[DELTA];
-        int n = 0;
+        
+        ArrayList<Integer> numbers = new ArrayList<>();
+        
         System.out.println("Zadej posloupnost");
+        
         while(true) {
-            if (n == DELTA - 1) {
-                int[] b = new int[n + DELTA];
-                System.arraycopy(a, 0, b, 0, n + 1);
-                a = b;
-                b = null;
-            }
-            
             int x = sc.nextInt();
             if (x < 0) {
                 break;
             }
-            a[n] = x;
-            n++;
+            numbers.add(x);
         }
         
-        for (int i = 0; i < n + 1; i++) {
-            System.out.println(a[i]);
+        System.out.println("Zadej dolni hranici");
+        int a = sc.nextInt();
+        
+        System.out.println("Zadej horni hranici");
+        int b = sc.nextInt();
+        
+        HashSet<Integer> uniqueNumbers = new HashSet<>();
+        for (int number : numbers) {
+            if (number >= a && number <= b) {
+                uniqueNumbers.add(number);
+            }
         }
+
+        System.out.println("V posloupnosti " + numbers + " v intervalu " + a + " až " + b + ": " + uniqueNumbers.size() + " čísla.");
     }
 }

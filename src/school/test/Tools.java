@@ -81,9 +81,6 @@ public class Tools {
             if (matrix.length != matrix[i].length) {
                 return false;
             }
-        }
-        
-        for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[i].length; j++) {
                 if (i != j) {
                     if (matrix[i][j] != 0) {
