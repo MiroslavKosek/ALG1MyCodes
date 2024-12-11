@@ -18,19 +18,15 @@ public class BubbleSort {
     
     public static void sort(int[] a) {
         int n = a.length;
-        boolean swapped;
         
-        do {
-            swapped = false;
-            for (int i = 0; i < n - 1; i++) {
-                if (a[i] > a[i+1]) {
-                    int temp = a[i];
-                    a[i] = a[i+1];
-                    a[i+1] = temp;
-                    swapped = true;
+        for (int i = 1; i < n; i++) {
+            for (int j = 0; j < n - 1; j++) {
+                if (a[j] > a[j + 1]) {
+                    int temp = a[j + 1];
+                    a[j + 1] = a[j];
+                    a[j] = temp;
                 }
             }
-            n--;
-        } while (swapped);
+        }
     }
 }
