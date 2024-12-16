@@ -29,26 +29,19 @@ public class NaturalNumberTools {
      * @param number2 - second number
      * @return returns the divisor if found otherwise 1
      */
-    public static int greatestCommonDivisor(int number1, int number2){
-        int gcd = 1;
-        if(number2 > number1)
-        {
-            int a = number1;
+    public static int greatestCommonDivisor(int number1, int number2) {
+        if (number2 > number1) {
+            int temp = number1;
             number1 = number2;
-            number2 = a;
+            number2 = temp;
         }
-        
-        for(int i = number2; number2 >= 2; i--)
-        {
+
+        for (int i = number2; i >= 2; i--) {
             if ((number1 % i == 0) && (number2 % i == 0)) {
-                gcd = i;
-                break;
-                //return i;
+                return i;
             }
-            
         }
-        return gcd;
-        //return 1;
+        return 1;
     }
     
     /**
